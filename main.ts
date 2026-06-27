@@ -1,17 +1,11 @@
-// Using Deno's native npm specifiers
 import { Bot, webhookCallback } from "npm:grammy";
 
-// 1. Initialize the bot with your Telegram Token
 const bot = new Bot(Deno.env.get("TELEGRAM_TOKEN") || "");
 
-// 2. Function to fetch YouTube Channel ID
+// Function to fetch YouTube Channel ID
 async function getYoutubeChannelId(username: string): Promise<string> {
   const apiKey = Deno.env.get("YOUTUBE_API_KEY");
-  
-  // YouTube's modern API uses "handles" which usually start with @
   const cleanHandle = username.startsWith("@") ? username : `@${username}`;
-
-  // YouTube API endpoint using forHandle
   const url = `https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=${cleanHandle}&key=${apiKey}`;
   
   try {
@@ -29,7 +23,7 @@ async function getYoutubeChannelId(username: string): Promise<string> {
   }
 }
 
-// 3. Handle incoming text messages
+// Handle incoming text messages
 bot.on("message:text", async (ctx) => {
   const username = ctx.message.text.trim();
   
@@ -45,7 +39,7 @@ bot.on("message:text", async (ctx) => {
   
 });
 
-// 4. Set up the Deno server to listen for Webhooks
+// Set up the Deno server to listen for Webhooks
 const handleUpdate = webhookCallback(bot, "std/http");
 
 Deno.serve(async (req) => {
