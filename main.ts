@@ -37,6 +37,24 @@ bot.on("message:text", async (ctx) => {
 
 //  await ctx.reply(`RSS: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
 
+
+
+const replyMessage = `
+# Search Complete 🔍
+Here is the data for **${username}**:
+
+**Channel ID:** \`${channelId}\`
+
+> Tip: You can just tap the Channel ID above to copy it!
+  `;
+
+  // Send the multi-line message (ensure you pass the correct parse_mode)
+  await ctx.reply(replyMessage, { 
+    parse_mode: "MarkdownV2" 
+  });
+
+
+
 });
 
 
