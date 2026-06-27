@@ -39,9 +39,9 @@ bot.on("message:text", async (ctx) => {
   }
 
   const channelId = await getYoutubeChannelId(username);
-  await ctx.reply(`Channel ID: ${channelId}`);
-  await ctx.reply(`RSS: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
-await ctx.reply(`Channel ID: <code>${channelId}</code>`, { parse_mode: "HTML" });
+  
+  await ctx.reply(`RSS FEED: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+  await ctx.reply(`Channel ID: <code>${channelId}</code>`, { parse_mode: "HTML" });
 
 });
 
