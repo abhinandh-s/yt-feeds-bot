@@ -37,6 +37,8 @@ bot.on("message:text", async (ctx) => {
 
 //  await ctx.reply(`RSS: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
 
+});
+
 
 // Set up the Deno server to listen for Webhooks
 const handleUpdate = webhookCallback(bot, "std/http");
