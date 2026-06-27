@@ -25,6 +25,11 @@ async function getYoutubeChannelId(username: string): Promise<string | null> {
 
 // Handle incoming text messages
 bot.on("message:text", async (ctx) => {
+
+  if (ctx.message.via_bot) {
+    return;
+  }
+
   const username = ctx.message.text.trim();
   
   // Basic validation to ignore the default /start command
