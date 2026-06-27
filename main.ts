@@ -39,7 +39,7 @@ if (!channelId) {
  }
 
 await ctx.reply(`Channel ID: <code>${channelId}</code>\nRSS: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, { parse_mode: "HTML" });
-});
+
 
 });
 
