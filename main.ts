@@ -36,7 +36,17 @@ bot.on("message:text", async (ctx) => {
   await ctx.reply(`Channel ID: <code>${channelId}</code>`, { parse_mode: "HTML" });
 
   await ctx.reply(`RSS: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+
+const replyMessage = `
+Here is the data for **${username}**:
+
+**Channel ID:** \`${channelId}\`
+**RSS:** \`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}\`
+
+> Tip: You can just tap the Channel ID above to copy it!
+  `;
   
+await ctx.reply(replyMessage, { parse_mode: "MarkdownV2" });
 });
 
 // Set up the Deno server to listen for Webhooks
