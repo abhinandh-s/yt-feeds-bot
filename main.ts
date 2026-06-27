@@ -42,6 +42,7 @@ bot.on("message:text", async (ctx) => {
 if (!channelId) {
   return ctx.reply("Sorry, I couldn't find a channel with that username/handle.");
  }
+const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
 await ctx.reply(`<b>YouTube RSS Feed for ${username}</b>\n\nChannel ID: <code>${channelId}</code>\nRSS Link: ${rssUrl}`, { parse_mode: "HTML" });
 
