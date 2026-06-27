@@ -43,7 +43,7 @@ if (!channelId) {
   return ctx.reply("Sorry, I couldn't find a channel with that username/handle.");
  }
 
-await ctx.reply(`Channel ID: <code>${channelId}</code>\nRSS: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, { parse_mode: "HTML" });
+await ctx.reply(`<b>YouTube RSS Feed for ${query}</b>\n\n<b>Channel ID</>: <code>${channelId}</code>\n<b>RSS</b>: https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`, { parse_mode: "HTML" });
 
 
 });
