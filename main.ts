@@ -2,9 +2,14 @@ import { Bot, webhookCallback } from "npm:grammy";
 
 const bot = new Bot(Deno.env.get("TELEGRAM_TOKEN") || "");
 
-function extractHandle(input) {
-  return input.replace(/^@/, '')
+function extractHandle(input: string): string {
+  const atIndex = input.lastIndexOf('@');
+  return atIndex === -1 ? input : input.slice(atIndex + 1);
 }
+
+console.log(await getYoutubeChannelId("https://youtube.com/@judosloth"));
+console.log(await getYoutubeChannelId("@pewdiepie"));
+console.log(await getYoutubeChannelId("jacksepticeye"));
 
 // Function to fetch YouTube Channel ID
 async function getYoutubeChannelId(username: string): Promise<string | null> {
