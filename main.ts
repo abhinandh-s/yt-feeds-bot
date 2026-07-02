@@ -9,8 +9,9 @@ function extractHandle(input) {
 // Function to fetch YouTube Channel ID
 async function getYoutubeChannelId(username: string): Promise<string | null> {
   const apiKey = Deno.env.get("YOUTUBE_API_KEY");
-  const cleanHandle = username.startsWith("@") ? username : `@${username}`;
-  const url = `https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=${cleanHandle}&key=${apiKey}`;
+  // const cleanHandle = username.startsWith("@") ? username : `@${username}`;
+  const cleanHandle = extractHandle(username);
+  const url = `https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=@${cleanHandle}&key=${apiKey}`;
   
   try {
     const response = await fetch(url);
