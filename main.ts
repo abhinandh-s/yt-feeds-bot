@@ -61,7 +61,8 @@ bot.on("inline_query", async (ctx) => {
     title: `Get RSS for ${query}`,
     description: `Channel ID: ${channelId}`,
     input_message_content: {
-      message_text: `<b> 󰗃 YouTube RSS Feed for ${query}</b>\n\nChannel ID: <code>${channelId}</code>\n\nRSS Link: ${rssUrl}`,
+     // message_text: `<b> 󰗃 YouTube RSS Feed for ${query}</b>\n\nChannel ID: <code>${channelId}</code>\n\nRSS Link: ${rssUrl}`,
+ message_text: `🔗 RSS Link: ${rssUrl}`,
       parse_mode: "HTML",
     }
   }]);
