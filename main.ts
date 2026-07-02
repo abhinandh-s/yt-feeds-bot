@@ -2,6 +2,10 @@ import { Bot, webhookCallback } from "npm:grammy";
 
 const bot = new Bot(Deno.env.get("TELEGRAM_TOKEN") || "");
 
+function extractHandle(input) {
+  return input.replace(/^@/, '')
+}
+
 // Function to fetch YouTube Channel ID
 async function getYoutubeChannelId(username: string): Promise<string | null> {
   const apiKey = Deno.env.get("YOUTUBE_API_KEY");
