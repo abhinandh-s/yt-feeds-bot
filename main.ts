@@ -7,9 +7,11 @@ function extractHandle(input: string): string {
   return atIndex === -1 ? input : input.slice(atIndex + 1);
 }
 
+console.log("---- tests ----")
 console.log(await getYoutubeChannelId("https://youtube.com/@judosloth"));
 console.log(await getYoutubeChannelId("@pewdiepie"));
 console.log(await getYoutubeChannelId("jacksepticeye"));
+console.log("---------------")
 
 // Function to fetch YouTube Channel ID
 async function getYoutubeChannelId(username: string): Promise<string | null> {
