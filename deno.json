@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "start": "deno run --allow-net --allow-env --allow-read main.ts"
+  },
+  "imports": {
+    "grammy": "https://deno.land/x/grammy@v1.44.0/mod.ts"
+  }
+}
