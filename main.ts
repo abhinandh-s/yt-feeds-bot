@@ -3,6 +3,24 @@ import { extractHandle, getYoutubeChannelId } from "./utils.ts";
 
 const bot = new Bot(Deno.env.get("TELEGRAM_TOKEN") || "");
 
+bot.command('start', async (ctx) => {
+  await ctx.reply(
+    'Welcome! Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!',
+    {
+      parse_mode: 'HTML',
+    },
+  )
+})
+
+bot.command('privacy', async (ctx) => {
+  await ctx.reply(
+    '<b>Privacy policy</b>\n\nI gain absolutely <b>zero</b> monetary benefit from this. This is a passion project and I <b>do not</b> collect any user data.',
+    {
+      parse_mode: 'HTML',
+    },
+  )
+})
+
 bot.on("message:text", async (ctx) => {
 
   if (ctx.message.via_bot) {
@@ -10,11 +28,7 @@ bot.on("message:text", async (ctx) => {
   }
 
   const username = ctx.message.text.trim();
-  
-  // Basic validation to ignore the default /start command
-  if (username.startsWith("/")) {
-    return ctx.reply("Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!");
-  }
+
 
   const channelId = await getYoutubeChannelId(username);
  
