@@ -23,7 +23,9 @@ if (!channelId) {
  }
 const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
-await ctx.reply(`<b>YouTube RSS Feed for ${username}</b>\n\nChannel ID: <code>${channelId}</code>\nRSS Link: ${rssUrl}`, { parse_mode: "HTML" });
+await ctx.reply(`🔗 RSS Link: ${rssUrl}`);
+
+// await ctx.reply(`<b>YouTube RSS Feed for ${username}</b>\n\nChannel ID: <code>${channelId}</code>\nRSS Link: ${rssUrl}`, { parse_mode: "HTML" });
 
 
 });
