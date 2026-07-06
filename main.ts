@@ -1,4 +1,4 @@
-import { Bot, webhookCallback } from "npm:grammy";
+import { Bot, webhookCallback } from "grammy";
 import { extractHandle, getYoutubeChannelId } from "./utils.ts";
 
 const bot = new Bot(Deno.env.get("TELEGRAM_TOKEN") || "");
