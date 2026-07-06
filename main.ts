@@ -5,7 +5,7 @@ const bot = new Bot(Deno.env.get("TELEGRAM_TOKEN") || "");
 
 bot.command('start', async (ctx) => {
   await ctx.reply(
-    'Welcome! Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!',
+    'Welcome! Send me a YouTube handle (e.g., @mkbhd) and I\'ll send back the Channel ID!',
     {
       parse_mode: 'HTML',
     },
