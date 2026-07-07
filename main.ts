@@ -1,24 +1,18 @@
 import { Bot, webhookCallback } from 'grammy'
 import { getYoutubeChannelId } from './utils.ts'
 
+const START_MSG = "Welcome! Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!";
+
+const PRIVACY_POLICY = '<b>Privacy policy</b>\n\nI gain absolutely <b>zero</b> monetary benefit from this. This is a passion project and I <b>do not</b> collect any user data.';
+
 const bot = new Bot(Deno.env.get('TELEGRAM_TOKEN') || '')
 
 bot.command('start', async (ctx) => {
-  await ctx.reply(
-    "Welcome! Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!",
-    {
-      parse_mode: 'HTML',
-    },
-  )
+  await ctx.reply(START_MSG, { parse_mode: 'HTML' })
 })
 
 bot.command('privacy', async (ctx) => {
-  await ctx.reply(
-    '<b>Privacy policy</b>\n\nI gain absolutely <b>zero</b> monetary benefit from this. This is a passion project and I <b>do not</b> collect any user data.',
-    {
-      parse_mode: 'HTML',
-    },
-  )
+  await ctx.reply(PRIVACY_POLICY, { parse_mode: 'HTML' })
 })
 
 bot.on('message:text', async (ctx) => {
