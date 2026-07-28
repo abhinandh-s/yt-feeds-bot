@@ -2,6 +2,8 @@ import { Bot, webhookCallback } from 'grammy'
 import { getYoutubeChannelId } from './utils.ts'
 import { get_channel_id } from './lib/yt_bot.js'
 
+const apiKey = Deno.env.get('YOUTUBE_API_KEY')
+
 const START_MSG = "Welcome! Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!"
 
 const PRIVACY_POLICY =
@@ -24,7 +26,7 @@ bot.on('message:text', async (ctx) => {
 
   const username = ctx.message.text.trim()
 
-  const channelId = await get_channel_id(username)
+  const channelId = await get_channel_id(apiKey, username)
   // const channelId = await getYoutubeChannelId(username)
 
   if (!channelId) {
