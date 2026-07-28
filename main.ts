@@ -1,5 +1,6 @@
 import { Bot, webhookCallback } from 'grammy'
 import { getYoutubeChannelId } from './utils.ts'
+import { get_channel_id } from "./lib/yt_bot.js";
 
 const START_MSG = "Welcome! Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!"
 
@@ -23,7 +24,8 @@ bot.on('message:text', async (ctx) => {
 
   const username = ctx.message.text.trim()
 
-  const channelId = await getYoutubeChannelId(username)
+  const channelId = await get_channel_id(username)
+  // const channelId = await getYoutubeChannelId(username)
 
   if (!channelId) {
     return ctx.reply("Sorry, I couldn't find a channel with that username/handle.")
