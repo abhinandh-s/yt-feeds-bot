@@ -1,6 +1,6 @@
 import { Bot, webhookCallback } from 'grammy'
 import { getYoutubeChannelId } from './utils.ts'
-import { get_channel_id } from "./lib/yt_bot.js";
+import { get_channel_id } from './lib/yt_bot.js'
 
 const START_MSG = "Welcome! Send me a YouTube handle (e.g., @mkbhd) and I'll send back the Channel ID!"
 
