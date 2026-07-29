@@ -1,5 +1,4 @@
 import { Bot, webhookCallback } from 'grammy'
-import { getYoutubeChannelId } from './utils.ts'
 import { get_channel_id } from './lib/yt_bot.js'
 
 const apiKey = Deno.env.get('YOUTUBE_API_KEY')
@@ -23,11 +22,8 @@ bot.on('message:text', async (ctx) => {
   if (ctx.message.via_bot) {
     return
   }
-
   const username = ctx.message.text.trim()
-
   const channelId = await get_channel_id(apiKey, username)
-  // const channelId = await getYoutubeChannelId(username)
 
   if (!channelId) {
     return ctx.reply("Sorry, I couldn't find a channel with that username/handle.")
@@ -35,8 +31,6 @@ bot.on('message:text', async (ctx) => {
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
 
   await ctx.reply(`🔗 RSS Link: ${rssUrl}`)
-
-  // await ctx.reply(`<b>YouTube RSS Feed for ${username}</b>\n\nChannel ID: <code>${channelId}</code>\nRSS Link: ${rssUrl}`, { parse_mode: "HTML" });
 })
 
 // Inline Query Handler
@@ -47,10 +41,7 @@ bot.on('inline_query', async (ctx) => {
   if (query.length < 3) {
     return await ctx.answerInlineQuery([])
   }
-
-    const channelId = await get_channel_id(apiKey, username)
-  // const channelId = await getYoutubeChannelId(query)
-
+  const channelId = await get_channel_id(apiKey, username)
   if (!channelId) {
     // Show a "Not Found" result in the inline popup
     return await ctx.answerInlineQuery([{
