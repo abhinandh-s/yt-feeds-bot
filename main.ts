@@ -54,23 +54,20 @@ bot.on('inline_query', async (ctx) => {
     }])
   }
 
-  // Show the successful result in the inline popup
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
 
   await ctx.answerInlineQuery([{
     type: 'article',
-    id: channelId, // Unique ID for this result
+    id: channelId,
     title: `Get RSS for ${query}`,
     description: `Channel ID: ${channelId}`,
     input_message_content: {
-      // message_text: `<b> 󰗃 YouTube RSS Feed for ${query}</b>\n\nChannel ID: <code>${channelId}</code>\n\nRSS Link: ${rssUrl}`,
       message_text: `🔗 RSS Link: ${rssUrl}`,
       parse_mode: 'HTML',
     },
   }])
 })
 
-// Set up the Deno server to listen for Webhooks
 const handleUpdate = webhookCallback(bot, 'std/http')
 
 Deno.serve(async (req) => {
