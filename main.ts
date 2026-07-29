@@ -33,7 +33,6 @@ bot.on('message:text', async (ctx) => {
   await ctx.reply(`🔗 RSS Link: ${rssUrl}`)
 })
 
-// Inline Query Handler
 bot.on('inline_query', async (ctx) => {
   const query = ctx.inlineQuery.query.trim()
 
