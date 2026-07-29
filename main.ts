@@ -48,7 +48,8 @@ bot.on('inline_query', async (ctx) => {
     return await ctx.answerInlineQuery([])
   }
 
-  const channelId = await getYoutubeChannelId(query)
+    const channelId = await get_channel_id(apiKey, username)
+  // const channelId = await getYoutubeChannelId(query)
 
   if (!channelId) {
     // Show a "Not Found" result in the inline popup
