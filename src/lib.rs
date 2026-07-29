@@ -1,16 +1,15 @@
-
 use reqwest::Client;
 use serde::Deserialize;
 use wasm_bindgen::prelude::*;
 
 #[derive(Deserialize)]
-struct YtItem {
+struct Item {
     pub id: String,
 }
 
 #[derive(Deserialize)]
-struct YtResponse {
-    pub items: Option<Vec<YtItem>>,
+struct Response {
+    pub items: Option<Vec<Item>>,
 }
 
 /// Extracts the clean handle string from raw inputs like "@username" or full URLs.
@@ -39,7 +38,7 @@ pub async fn get_channel_id(api_key: &str, raw_handle: &str) -> Option<String> {
         .await
         .ok()?;
 
-    let data: YtResponse = response.json().await.ok()?;
+    let data: Response = response.json().await.ok()?;
 
     // Return the ID of the first matching item
     data.items?.into_iter().next().map(|item| item.id)
