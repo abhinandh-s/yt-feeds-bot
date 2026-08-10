@@ -7,6 +7,7 @@ export class ChannelDetails {
   free(): void;
   [Symbol.dispose](): void;
   readonly id: string;
+  readonly thumbnail_small_url: string;
   readonly thumbnail_url: string;
   readonly title: string;
 }
