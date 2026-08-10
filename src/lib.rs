@@ -25,7 +25,7 @@ impl ChannelDetails {
     pub fn thumbnail_small_url(&self) -> String { self.thumbnail_small_url.clone() }
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 struct Thumbnail {
     url: String,
 }
