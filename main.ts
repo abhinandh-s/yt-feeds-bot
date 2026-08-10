@@ -67,7 +67,7 @@ bot.on('inline_query', async (ctx) => {
 
   const channelId = details.id
   const title = details.title
-  const photoUrl = details.thumbnail_url
+  const photoUrl = details.thumbnail_small_url
   details.free()
 
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
