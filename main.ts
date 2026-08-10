@@ -40,7 +40,7 @@ bot.on('inline_query', async (ctx) => {
   if (query.length < 3) {
     return await ctx.answerInlineQuery([])
   }
-  const channelId = await get_channel_id(apiKey, username)
+  const channelId = await get_channel_id(apiKey, query)
   if (!channelId) {
     // Show a "Not Found" result in the inline popup
     return await ctx.answerInlineQuery([{
