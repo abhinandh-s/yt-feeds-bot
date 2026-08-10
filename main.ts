@@ -1,7 +1,5 @@
 import { Bot, webhookCallback } from 'grammy'
-import init, { get_channel_details } from './lib/yt_bot.js'
-
-await init()
+import { get_channel_details } from './lib/yt_bot.js'
 
 const apiKey = Deno.env.get('YOUTUBE_API_KEY') || ''
 
