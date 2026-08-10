@@ -83,15 +83,19 @@ pub async fn get_channel_details(api_key: &str, raw_handle: &str) -> Option<Chan
     let item = data.items?.into_iter().next()?;
     let snippet = item.snippet?;
 
-    let thumbnail_url = snippet.thumbnails.high
-        .or(snippet.thumbnails.medium.clone())
-        .or(snippet.thumbnails.default.clone())?
-        .url;
+    let thumbnail_url = normalize_url(
+        snippet.thumbnails.high.clone()
+            .or(snippet.thumbnails.medium.clone())
+            .or(snippet.thumbnails.default.clone())?
+            .url
+    );
 
-    let thumbnail_small_url = snippet.thumbnails.default
-        .or(snippet.thumbnails.medium)
-        .or(snippet.thumbnails.high)?
-        .url;
+    let thumbnail_small_url = normalize_url(
+        snippet.thumbnails.default
+            .or(snippet.thumbnails.medium)
+            .or(snippet.thumbnails.high)?
+            .url
+    );
 
     Some(ChannelDetails {
         id: item.id,
