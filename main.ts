@@ -29,9 +29,9 @@ bot.on('message:text', async (ctx) => {
     return ctx.reply("Sorry, I couldn't find a channel with that username/handle.")
   }
 
-  const channelId = details.title ? details.id() : ''
-  const title = details.title()
-  const photoUrl = details.thumbnail_url()
+  const channelId = details.id
+  const title = details.title
+  const photoUrl = details.thumbnail_url
   details.free()
 
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
@@ -64,9 +64,9 @@ bot.on('inline_query', async (ctx) => {
     }])
   }
 
-  const channelId = details.id()
-  const title = details.title()
-  const photoUrl = details.thumbnail_url()
+  const channelId = details.id
+  const title = details.title
+  const photoUrl = details.thumbnail_url
   details.free()
 
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
