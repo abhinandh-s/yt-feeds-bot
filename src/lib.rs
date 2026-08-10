@@ -69,6 +69,14 @@ fn api_url(api_key: &str, raw_handle: &str) -> String {
     )
 }
 
+fn normalize_url(url: String) -> String {
+    if url.starts_with("//") {
+        format!("https:{}", url)
+    } else {
+        url
+    }
+}
+
 #[wasm_bindgen]
 pub async fn get_channel_details(api_key: &str, raw_handle: &str) -> Option<ChannelDetails> {
     let client = Client::new();
