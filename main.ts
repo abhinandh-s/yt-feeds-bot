@@ -35,11 +35,12 @@ bot.on('message:text', async (ctx) => {
   details.free()
 
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-  const caption = `<b>${title}</b> (${username})\n\n🔗 <b>RSS Link:</b> ${rssUrl}`
+  const caption = `<b>${title}</b> (${username})\n\n<b>RSS Link:</b> ${rssUrl}`
 
   await ctx.replyWithPhoto(photoUrl, {
     caption,
     parse_mode: 'HTML',
+    protect_content: true, // Prevents saving, downloading, and forwarding
   })
 })
 
@@ -70,7 +71,7 @@ bot.on('inline_query', async (ctx) => {
   details.free()
 
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-  const caption = `<b>${title}</b> (${query})\n\n🔗 <b>RSS Link:</b> ${rssUrl}`
+  const caption = `<b>${title}</b> (${query})\n\n<b>RSS Link:</b> ${rssUrl}`
 
   await ctx.answerInlineQuery([{
     type: 'article',
