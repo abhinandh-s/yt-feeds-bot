@@ -59,7 +59,6 @@ fn extract_handle(input: &str) -> &str {
 
 fn api_url(api_key: &str, raw_handle: &str) -> String {
     let clean_handle = extract_handle(raw_handle);
-    // Changed part=id to part=snippet,id
     format!(
         "https://www.googleapis.com/youtube/v3/channels?part=snippet,id&forHandle=%40{}&key={}",
         clean_handle, api_key
